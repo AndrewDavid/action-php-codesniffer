@@ -1,6 +1,6 @@
-name: 'action-php-codesniffer'
+name: 'action-php-codesniffer-with-report'
 description: 'Runs PHP_CodeSniffer on files changed in current PR or even only on lines by author of PR'
-author: 'Konstantin Vyatkin <tino@vtkn.io>'
+author: 'Konstantin Vyatkin <tino@vtkn.io> (modified by AndrewDavidJ)'
 inputs:
   files:       
     description: 'files to check'
