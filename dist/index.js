@@ -3462,7 +3462,7 @@ async function lint(filenames, executablePath = DEFAULT_EXECUTABLE_PATH, options
         assert.ok(ver >= '2.6', `This library requires phpcs version 2.6 or later, received ${ver}`);
         // we use promisified version, so, should not set exit code or it will throw
         const args = [
-            '--report=json',
+            '--report=json ${options.report}',
             '-q',
             `--encoding=${options.encoding}`,
             `--standard=${options.standard}`,
@@ -3554,7 +3554,7 @@ var SUPPORTED_LOCALE = {
         map: {
             İ: "\u0069",
             I: "\u0131",
-            İ: "\u0069"
+            İ: "\u0069"
         }
     },
     az: {
@@ -3562,7 +3562,7 @@ var SUPPORTED_LOCALE = {
         map: {
             İ: "\u0069",
             I: "\u0131",
-            İ: "\u0069"
+            İ: "\u0069"
         }
     },
     lt: {
@@ -4736,6 +4736,9 @@ const core = __importStar(__webpack_require__(470));
 function runOnCompleteFiles(files) {
     const phpcs = core.getInput('phpcs_path', { required: true });
     const args = ['--report=checkstyle'];
+    const report = core.getInput('report');
+    if (report)
+	args.push(`--report=json ${report}`);
     const standard = core.getInput('standard');
     if (standard)
         args.push(`--standard=${standard}`);
@@ -5860,6 +5863,9 @@ async function runOnBlame(files) {
     var _a;
     try {
         const options = {};
+	const report = core.getInput('report');
+	if (report)
+	    options.report = report;
         const standard = core.getInput('standard');
         if (standard)
             options.standard = standard;
