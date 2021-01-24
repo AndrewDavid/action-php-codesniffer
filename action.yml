@@ -14,6 +14,10 @@ inputs:
     description: 'path to phpcs executable'
     default: 'phpcs'
     required: false
+  report:
+    description: 'filename to save json report'
+    default: '/report.json'
+    required: true
   standard:
     description: 'Code style standard name (PEAR, ) or path to a phpcs.xml file'
     required: false
