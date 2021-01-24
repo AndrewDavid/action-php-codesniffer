@@ -7,7 +7,11 @@ import * as core from '@actions/core';
  */
 export function runOnCompleteFiles(files: string[]): number {
   const phpcs = core.getInput('phpcs_path', { required: true });
+  
   const args = ['--report=checkstyle'];
+  
+  const report = core.getInput('report');
+  if (report) args.push(`--report=json ${report}`);
 
   const standard = core.getInput('standard');
   if (standard) args.push(`--standard=${standard}`);
